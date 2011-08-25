@@ -49,9 +49,14 @@ public class CompanyServices {
 
 	@WebMethod
 	public List<City> listCities(State state, String prefix) {
+		if (prefix == null) {
+			prefix = "";
+		}
 		return em
 				.createQuery(
-						"select c from City c join State s where s = :state and c.name like :prefix",
+						"select c " +
+						"from City c, State s " +
+						"where s = :state and c.name like :prefix and c.state = s",
 						City.class).setParameter("state", state)
 				.setParameter("prefix", prefix + "%").getResultList();
 	}
