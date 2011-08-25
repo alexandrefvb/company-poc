@@ -18,6 +18,9 @@ public class State implements Serializable {
 	@NotBlank
 	private String name;
 
+	@NotBlank
+	private String acronym;
+
 	public Long getId() {
 		return id;
 	}
@@ -34,4 +37,11 @@ public class State implements Serializable {
 		this.name = name;
 	}
 
+	public String getAcronym() {
+		return acronym;
+	}
+
+	public void setAcronym(String acronym) {
+		this.acronym = acronym;
+	}
 }
