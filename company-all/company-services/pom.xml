@@ -26,7 +26,7 @@
 		<dependency>
 			<groupId>br.com.tqi</groupId>
 			<artifactId>company-domain</artifactId>
-			<version>${parent.version}</version>
+			<version>${project.parent.version}</version>
 		</dependency>
 	</dependencies>
 

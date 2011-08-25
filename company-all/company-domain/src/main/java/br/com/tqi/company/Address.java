@@ -20,6 +20,9 @@ public class Address implements Serializable {
 	@ManyToOne
 	private City city;
 
+	@ManyToOne
+	private Company company;
+
 	private String street;
 
 	private String number;
@@ -64,5 +67,13 @@ public class Address implements Serializable {
 
 	public void setComplement(String complement) {
 		this.complement = complement;
+	}
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 }
