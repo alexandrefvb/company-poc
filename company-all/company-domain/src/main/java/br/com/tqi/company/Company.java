@@ -12,8 +12,6 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import br.com.caelum.stella.bean.validation.CNPJ;
-
 @Entity
 public class Company implements Serializable {
 
@@ -24,7 +22,7 @@ public class Company implements Serializable {
 	private Long id;
 
 	@NotBlank
-	@CNPJ(message = "CNPJ inválido")
+	//@CNPJ(message = "CNPJ inválido")
 	private String cnpj;
 
 	@NotBlank

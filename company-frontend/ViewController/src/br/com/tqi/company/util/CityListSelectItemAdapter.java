@@ -14,7 +14,7 @@ public class CityListSelectItemAdapter extends ArrayList<SelectItem> {
 
    public CityListSelectItemAdapter(List<City> cities) {
        for (City c : cities) {
-           add(new SelectItem(c.getId(), c.getName()));
+           add(new SelectItem(c.getName(), c.getName()));
        }
    }
 
