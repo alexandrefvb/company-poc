@@ -4,7 +4,8 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <f:view>
         <af:document title="Cadastro de empresa" id="d1">
-            <af:form id="f1">
+            <jsp:include page="/menu.jspx"/>
+            <af:form id="fCompanyForm">
                 <af:outputText value="Dados da empresa" id="ot1"/>
                 <af:messages id="m1"/>
                 <af:panelFormLayout id="pfl2">
@@ -39,7 +40,7 @@
                         <af:autoSuggestBehavior suggestItems="#{createCompanyBean.suggestItems}" maxSuggestedItems="5" />
                     </af:inputText>
                 </af:panelFormLayout>
-                <af:commandButton text="Cancelar" action="home" id="cb1"/>
+                <af:commandButton text="Cancelar" action="home" id="cb1" immediate="true"/>
                 <af:commandButton text="Salvar" id="cb2" actionListener="#{createCompanyBean.save}"/>
             </af:form>
         </af:document>

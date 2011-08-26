@@ -4,7 +4,8 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <f:view>
         <af:document title="Pesquisa de empresa" id="d1">
-            <af:form id="f1">
+            <jsp:include page="/menu.jspx"/>
+            <af:form id="fCompanySearch">
                 <af:outputText value="Filtro(s)" id="ot1"/>
                 <af:messages id="m1"/>
                 <af:panelFormLayout id="pfl2">
@@ -14,7 +15,6 @@
                     <af:inputText label="CNPJ:" id="it1"
                                   value="#{searchCompanyBean.company.cnpj}"/>
                     <af:commandButton text="Pesquisar" id="cb2" actionListener="#{searchCompanyBean.find}"/>
-                    <af:commandButton text="Cadastrar" id="cb3" action="company_form"/>
                 </af:panelFormLayout>
                 <af:separator id="s1"/>
                 <af:table value="#{searchCompanyBean.companies}" var="row" rowBandingInterval="0" id="t1"
