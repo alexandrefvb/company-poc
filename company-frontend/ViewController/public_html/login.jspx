@@ -6,6 +6,7 @@
         <af:document title="login.jspx" id="d1">
             <af:form id="f1">
                 <af:messages id="m1"/>
+                <af:outputText value="Informe suas crendenciais" id="ot1"/>
                 <af:panelFormLayout id="pfl2">
                     <af:inputText label="Login:" id="it1" value="#{loginBean.username}"/>
                     <af:inputText label="Senha:" id="it2" secret="true" value="#{loginBean.password}"/>

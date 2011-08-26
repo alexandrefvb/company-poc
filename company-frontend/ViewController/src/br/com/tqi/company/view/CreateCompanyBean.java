@@ -18,6 +18,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.SelectItem;
 
 
@@ -51,24 +52,10 @@ public class CreateCompanyBean implements Serializable{
             company = new Company();
             MessageUtil.infoMessage("Empresa cadastrada com sucesso.");
         } catch(Exception e) {
-            MessageUtil.infoMessage("Ocorreu um problema ao cadastrar a empresa.");      
-        }
-        
+            MessageUtil.errorMessage("Ocorreu um problema ao cadastrar a empresa.");      
+        }       
        
     }
-    
-    public void update(ActionEvent event) {
-        
-        try {
-            WSFactory.getInstance().getCompanyServices().updateCompany(getCompany());
-            MessageUtil.infoMessage("Empresa atualizada com sucesso.");
-        } catch(Exception e) {
-            MessageUtil.infoMessage("Ocorreu um problema ao atualizar a empresa.");      
-        }
-        
-       
-    }
-        
 
     public Company getCompany() {
         

@@ -31,10 +31,6 @@
                     </af:column>
                     <af:column id="c4" headerText="Ações" width="120">
                         <af:commandLink
-                            action="company_form" text="Editar" id="commandLink1">
-                            <af:setActionListener from="#{row.id}" to="#{createCompanyBean.company.id}"/>
-                        </af:commandLink>
-                        <af:commandLink
                             actionListener="#{searchCompanyBean.remove}" text="Remover" id="commandLink2">
                             <af:setActionListener from="#{row.id}" to="#{searchCompanyBean.company.id}"/>
                         </af:commandLink>
