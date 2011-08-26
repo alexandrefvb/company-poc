@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:subview id="subviewMenu">
+            <af:form id="fMenu">
+            <af:menuBar id="mb1">
+                    <af:menu text="Menu" id="mEmpresa">
+                        <af:commandMenuItem text="Pesquisar empresa" action="company_search" id="cmi1"/>
+                        <af:commandMenuItem text="Cadastrar empresa" action="company_form" id="cmi2"/>
+                        <af:commandMenuItem text="Home" action="home" id="cmi3"/>
+                    </af:menu>                  
+            </af:menuBar>
+            </af:form>
+    </f:subview>
+</jsp:root>

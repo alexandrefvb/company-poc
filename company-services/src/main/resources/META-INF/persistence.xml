@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+	<persistence-unit name="CompanyPU" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>br.com.tqi.company.Address</class>
+		<class>br.com.tqi.company.City</class>
+		<class>br.com.tqi.company.Company</class>
+		<class>br.com.tqi.company.State</class>
+		<jta-data-source>jdbc/__default</jta-data-source>
+		<properties>
+			<!--
+			<property name="hibernate.connection.url" value="jdbc:derby:company-db" />
+			<property name="hibernate.connection.driver_class" value="org.apache.derby.jdbc.EmbeddedDriver" />
+			<property name="hibernate.connection.username" value="" />
+			<property name="hibernate.connection.password" value="" />
+			-->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />  
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+		</properties>
+	</persistence-unit>
+</persistence>

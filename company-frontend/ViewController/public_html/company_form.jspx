@@ -40,7 +40,7 @@
                         <af:autoSuggestBehavior suggestItems="#{createCompanyBean.suggestItems}" maxSuggestedItems="5" />
                     </af:inputText>
                 </af:panelFormLayout>
-                <af:commandButton text="Cancelar" action="home" id="cb1" immediate="true"/>
+                <af:commandButton text="Cancelar" action="home" id="cb1" immediate="true" />
                 <af:commandButton text="Salvar" id="cb2" actionListener="#{createCompanyBean.save}"/>
             </af:form>
         </af:document>
