@@ -1,5 +1,6 @@
 package br.com.tqi.company.view;
 
+import br.com.tqi.company.util.MessageUtil;
 import br.com.tqi.company.util.WSFactory;
 
 import br.com.tqi.company.ws.client.Address;
@@ -37,7 +38,11 @@ public class SearchCompanyBean implements Serializable{
     
     public void remove(ActionEvent event) {
      
-        WSFactory.getInstance().getCompanyServices().deleteCompany(getCompany().getId());   
+        WSFactory.getInstance().getCompanyServices().deleteCompany(getCompany().getId());
+        
+        MessageUtil.infoMessage("Empresa removida com sucesso");
+        
+        find(null);
     }
 
 
