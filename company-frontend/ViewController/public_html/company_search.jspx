@@ -17,6 +17,7 @@
                     <af:commandButton text="Pesquisar" id="cb2" actionListener="#{searchCompanyBean.find}"/>
                 </af:panelFormLayout>
                 <af:separator id="s1"/>
+                <af:panelCollection id="panelC" inlineStyle="width:1253px;" >
                 <af:table value="#{searchCompanyBean.companies}" var="row" rowBandingInterval="0" id="t1"
                           emptyText="Nenhuma empresa encontrada.">
                     <af:column sortable="false" headerText="Código" align="start" id="c1" width="120">
@@ -39,6 +40,7 @@
                         </af:commandLink>
                     </af:column>
                 </af:table>
+                </af:panelCollection>
             </af:form>        
         </af:document>
     </f:view>
