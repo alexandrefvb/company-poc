@@ -6,8 +6,8 @@
             <af:form id="fMenu">
             <af:menuBar id="mb1">
                     <af:menu text="Menu" id="mEmpresa">
-                        <af:commandMenuItem text="Pesquisar empresa" action="company_search" id="cmi1"/>
-                        <af:commandMenuItem text="Cadastrar empresa" action="company_form" id="cmi2"/>
+                        <af:commandMenuItem text="Pesquisar empresa" action="company_search" id="cmi1" rendered="#{facesContext.externalContext.sessionMap['search_permission'] == true}"/>
+                        <af:commandMenuItem text="Cadastrar empresa" action="company_form" id="cmi2" rendered="#{facesContext.externalContext.sessionMap['edit_permission'] == true}"/>
                         <af:commandMenuItem text="Home" action="home" id="cmi3"/>
                     </af:menu>                  
             </af:menuBar>
