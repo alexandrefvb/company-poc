@@ -21,9 +21,26 @@ public class CompanyServices {
 	@PersistenceContext
 	private EntityManager em;
 
+	private void loadCity(Company company) {
+		company.getAddress()
+				.setCity(
+						em.createQuery(
+								"select c from City c where c.name = :name and c.state = :state",
+								City.class)
+								.setParameter(
+										"name",
+										company.getAddress().getCity()
+												.getName())
+								.setParameter(
+										"state",
+										company.getAddress().getCity()
+												.getState()).getSingleResult());
+	}
+
 	@WebMethod
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public Company addCompany(Company company) {
+		loadCity(company);
 		em.persist(company);
 		return company;
 	}

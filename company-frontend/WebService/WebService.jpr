@@ -124,7 +124,7 @@
    </hash>
    <hash n="oracle.jdeveloper.model.J2eeSettings">
       <value n="j2eeWebAppName" v="company-frontend-WebService-webapp"/>
-      <value n="j2eeWebContextRoot" v="company-frontend-WebService-context-root"/>
+      <value n="j2eeWebContextRoot" v="company-ws"/>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectLibraries">
       <list n="exportedReferences">
