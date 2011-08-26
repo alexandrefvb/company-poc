@@ -13,29 +13,27 @@ import javax.servlet.http.HttpServletResponse;
 
 public class LoginFilter implements Filter {
 
-   @Override
-   public void destroy() {
-   }
+    @Override
+    public void destroy() {
+    }
 
-   @Override
-   public void doFilter(ServletRequest request, ServletResponse response,
-           FilterChain chain) throws IOException, ServletException {
-       
-       chain.doFilter(request, response);
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
+                                                                                                     ServletException {
 
-//       HttpServletRequest req = (HttpServletRequest) request;
-//       HttpServletResponse resp = (HttpServletResponse) response;
-//       if (req.getSession().getAttribute("logged_in") == null
-//               || !(Boolean) req.getSession().getAttribute("logged_in")
-//               || req.getRequestURI().contains("login.jspx")) {
-//           resp.sendRedirect("/faces/login.jspx");
-//       } else {
-//           chain.doFilter(request, response);
-//       }
-   }
+        HttpServletRequest req = (HttpServletRequest)request;
+        HttpServletResponse resp = (HttpServletResponse)response;
+        if ((req.getSession().getAttribute("logged_in") == null ||
+             !(Boolean)req.getSession().getAttribute("logged_in")) && !req.getRequestURI().contains("login.jspx")) {
+            resp.sendRedirect("/company/faces/login.jspx");
+        } else {
+            chain.doFilter(request, response);
+        }
 
-   @Override
-   public void init(FilterConfig filterConfig) throws ServletException {
-   }
+    }
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+    }
 
 }
