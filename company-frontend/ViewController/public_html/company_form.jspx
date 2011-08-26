@@ -6,6 +6,7 @@
         <af:document title="Cadastro de empresa" id="d1">
             <af:form id="f1">
                 <af:outputText value="Dados da empresa" id="ot1"/>
+                <af:messages id="m1"/>
                 <af:panelFormLayout id="pfl2">
                     <f:facet name="footer"/>
                     <af:inputText label="Nome:" id="it2" required="true"
@@ -29,7 +30,7 @@
                                   value="#{createCompanyBean.address.complement}"/>
                     <af:selectOneChoice label="UF:" id="soc1" required="true"
                                         requiredMessageDetail="O estado é de preenchimento obrigatório."
-                                        value="#{createCompanyBean.state}">
+                                        value="#{createCompanyBean.state.acronym}" immediate="true" autoSubmit="true">
                         <f:selectItems value="#{createCompanyBean.states}" var="state"
                                        id="si1" itemLabel="#{state.name}" itemValue="#{state.acronym}"/>
                     </af:selectOneChoice>

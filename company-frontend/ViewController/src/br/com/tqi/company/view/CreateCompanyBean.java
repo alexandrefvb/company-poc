@@ -2,6 +2,7 @@ package br.com.tqi.company.view;
 
 
 import br.com.tqi.company.util.CityListSelectItemAdapter;
+import br.com.tqi.company.util.MessageUtil;
 import br.com.tqi.company.util.StateListSelectItemAdapter;
 import br.com.tqi.company.util.WSFactory;
 import br.com.tqi.company.ws.client.Address;
@@ -44,8 +45,27 @@ public class CreateCompanyBean implements Serializable{
 
     public void save(ActionEvent event) {
         
-        WSFactory.getInstance().getCompanyServices().addCompany(getCompany());
-        company = new Company();
+        try {
+            WSFactory.getInstance().getCompanyServices().addCompany(getCompany());
+            company = new Company();
+            MessageUtil.infoMessage("Empresa cadastrada com sucesso.");
+        } catch(Exception e) {
+            MessageUtil.infoMessage("Ocorreu um problema ao cadastrar a empresa.");      
+        }
+        
+       
+    }
+    
+    public void update(ActionEvent event) {
+        
+        try {
+            WSFactory.getInstance().getCompanyServices().updateCompany(getCompany());
+            MessageUtil.infoMessage("Empresa atualizada com sucesso.");
+        } catch(Exception e) {
+            MessageUtil.infoMessage("Ocorreu um problema ao atualizar a empresa.");      
+        }
+        
+       
     }
         
 
@@ -69,16 +89,17 @@ public class CreateCompanyBean implements Serializable{
 
 
     public CityListSelectItemAdapter suggestItems(javax.faces.context.FacesContext context, oracle.adf.view.rich.model.AutoSuggestUIHints hints){
+                
+        List<br.com.tqi.company.ws.client.City> list = WSFactory.getInstance().getCompanyServices().listCities(getState(), hints.getSubmittedValue());           
+        cities = new CityListSelectItemAdapter(list);
+        return cities;
         
-        return getCities();
     }
 
     public CityListSelectItemAdapter getCities() {
         
-        if (cities == null) {
-            List<br.com.tqi.company.ws.client.City> list = WSFactory.getInstance().getCompanyServices().listCities(getState(), getCity().getName());
-            cities = new CityListSelectItemAdapter(list);
-        }
+        List<br.com.tqi.company.ws.client.City> list = WSFactory.getInstance().getCompanyServices().listCities(getState(), getCity().getName());           
+        cities = new CityListSelectItemAdapter(list);
         return cities;
     }
 
@@ -87,6 +108,9 @@ public class CreateCompanyBean implements Serializable{
     }
 
     public State getState() {
+        if (state == null) {
+            state = new State();
+        }
         return state;
     }
 

@@ -6,6 +6,7 @@
         <af:document title="Pesquisa de empresa" id="d1">
             <af:form id="f1">
                 <af:outputText value="Filtro(s)" id="ot1"/>
+                <af:messages id="m1"/>
                 <af:panelFormLayout id="pfl2">
                     <f:facet name="footer"/>
                     <af:inputText label="Nome:" id="it2"
