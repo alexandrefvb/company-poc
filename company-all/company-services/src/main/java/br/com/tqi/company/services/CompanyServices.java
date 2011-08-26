@@ -1,9 +1,7 @@
 package br.com.tqi.company.services;
 
-import java.util.Collections;
 import java.util.List;
 
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -46,7 +44,23 @@ public class CompanyServices {
 
 	@WebMethod
 	public List<Company> listCompanies(String cnpj, String name) {
-		return Collections.emptyList();
+		if (name == null) {
+			name = "";
+		}
+		if (cnpj == null) {
+			return em
+					.createQuery(
+							"select c from Company c where c.name like :name",
+							Company.class).setParameter("name", name + "%")
+					.getResultList();
+		} else {
+			return em
+					.createQuery(
+							"select c from Company c where c.name like :name and c.cnpj = :cnpj",
+							Company.class).setParameter("name", name + "%")
+					.setParameter("cnpj", cnpj).getResultList();
+
+		}
 	}
 
 	@WebMethod
