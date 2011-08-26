@@ -46,6 +46,7 @@ public class CreateCompanyBean implements Serializable{
     public void save(ActionEvent event) {
         
         try {
+            getCompany().getAddress().getCity().setState(this.state);
             WSFactory.getInstance().getCompanyServices().addCompany(getCompany());
             company = new Company();
             MessageUtil.infoMessage("Empresa cadastrada com sucesso.");
