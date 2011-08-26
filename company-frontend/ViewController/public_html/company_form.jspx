@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="Cadastro de empresa" id="d1">
+            <af:form id="f1">
+                <af:outputText value="Dados da empresa" id="ot1"/>
+                <af:panelFormLayout id="pfl2">
+                    <f:facet name="footer"/>
+                    <af:inputText label="Nome:" id="it2" required="true"
+                                  requiredMessageDetail="O nome é de preenchimento obrigatório."
+                                  value="#{createCompanyBean.company.name}"/>
+                    <af:inputText label="CNPJ:" id="it1" required="true"
+                                  requiredMessageDetail="O CNPJ é de preenchimento obrigatório."
+                                  value="#{createCompanyBean.company.cnpj}"/>
+                </af:panelFormLayout>
+                <af:separator id="s1"/>
+                <af:outputText value="Endereço" id="ot2"/>
+                <af:panelFormLayout id="pfl1">
+                    <f:facet name="footer"/>
+                    <af:inputText label="Logradouro:" id="it6" required="true"
+                                  requiredMessageDetail="O logradouro é de preenchimento obrigatório."
+                                  value="#{createCompanyBean.address.street}"/>
+                    <af:inputText label="Número:" id="it3" required="true"
+                                  requiredMessageDetail="O número é de preenchimento obrigatório."
+                                  value="#{createCompanyBean.address.number}"/>
+                    <af:inputText label="Complemento:" id="it4"
+                                  value="#{createCompanyBean.address.complement}"/>
+                    <af:selectOneChoice label="UF:" id="soc1" required="true"
+                                        requiredMessageDetail="O estado é de preenchimento obrigatório."
+                                        value="#{createCompanyBean.state}">
+                        <f:selectItems value="#{createCompanyBean.states}" var="state"
+                                       id="si1" itemLabel="#{state.name}" itemValue="#{state.acronym}"/>
+                    </af:selectOneChoice>
+                    <af:inputText id="inputText" label="Cidade:"
+                                  value="#{createCompanyBean.city.name}">
+                        <af:autoSuggestBehavior suggestItems="#{createCompanyBean.suggestItems}" maxSuggestedItems="5" />
+                    </af:inputText>
+                </af:panelFormLayout>
+                <af:commandButton text="Cancelar" action="home" id="cb1"/>
+                <af:commandButton text="Salvar" id="cb2" actionListener="#{createCompanyBean.save}"/>
+            </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

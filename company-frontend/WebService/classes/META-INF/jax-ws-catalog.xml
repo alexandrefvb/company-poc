@@ -1,0 +1,4 @@
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <system systemId="http://localhost:8080/CompanyServicesService/CompanyServices?wsdl#%7Bhttp%3A%2F%2Fservices.company.tqi.com.br%2F%7DCompanyServicesService"
+          uri="http://localhost:8080/CompanyServicesService/CompanyServices?wsdl"/>
+</catalog>

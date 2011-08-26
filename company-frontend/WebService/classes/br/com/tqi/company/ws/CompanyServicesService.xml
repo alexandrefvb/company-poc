@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle-webservice-clients xmlns:ns2="http://java.sun.com/xml/ns/javaee">
+   <webservice-client>
+      <service-qname localpart="CompanyServicesService" namespaceURI="http://services.company.tqi.com.br/"/>
+      <port-info>
+         <wsdl-port localpart="CompanyServicesPort" namespaceURI="http://services.company.tqi.com.br/"/>
+         <runtime/>
+         <policy-references>
+            <policy-reference uri="oracle/no_authentication_client_policy" category="security"/>
+         </policy-references>
+         <operations>
+            <operation name="addCompany"/>
+            <operation name="updateCompany"/>
+            <operation name="deleteCompany"/>
+            <operation name="listCompanies"/>
+            <operation name="listStates"/>
+            <operation name="listCities"/>
+         </operations>
+      </port-info>
+   </webservice-client>
+</oracle-webservice-clients>

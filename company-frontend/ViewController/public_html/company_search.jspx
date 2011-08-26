@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="Pesquisa de empresa" id="d1">
+            <af:form id="f1">
+                <af:outputText value="Filtro(s)" id="ot1"/>
+                <af:panelFormLayout id="pfl2">
+                    <f:facet name="footer"/>
+                    <af:inputText label="Nome:" id="it2"
+                                  value="#{searchCompanyBean.company.name}"/>
+                    <af:inputText label="CNPJ:" id="it1"
+                                  value="#{searchCompanyBean.company.cnpj}"/>
+                    <af:commandButton text="Pesquisar" id="cb2" actionListener="#{searchCompanyBean.find}"/>
+                    <af:commandButton text="Cadastrar" id="cb3" action="company_form"/>
+                </af:panelFormLayout>
+                <af:separator id="s1"/>
+                <af:table value="#{searchCompanyBean.companies}" var="row" rowBandingInterval="0" id="t1"
+                          emptyText="Nenhuma empresa encontrada.">
+                    <af:column sortable="false" headerText="Código" align="start" id="c1" width="120">
+                        <af:outputText value="#{row.id}" id="ot2"/>
+                    </af:column>
+                    <af:column sortable="false" headerText="Name" align="start" id="c2" width="120">
+                        <af:outputText value="#{row.name}" id="ot3"/>
+                    </af:column>
+                    <af:column sortable="false" headerText="Cnpj" align="start" id="c3" width="120">
+                        <af:outputText value="#{row.cnpj}" id="ot4"/>
+                    </af:column>
+                    <af:column id="c4" headerText="Ações" width="120">
+                        <af:commandLink
+                            action="company_form" text="Editar" id="commandLink1">
+                            <af:setActionListener from="#{row.id}" to="#{createCompanyBean.company.id}"/>
+                        </af:commandLink>
+                        <af:commandLink
+                            actionListener="#{searchCompanyBean.remove}" text="Remover" id="commandLink2">
+                            <af:setActionListener from="#{row.id}" to="#{searchCompanyBean.company.id}"/>
+                        </af:commandLink>
+                    </af:column>
+                </af:table>
+            </af:form>        
+        </af:document>
+    </f:view>
+</jsp:root>
