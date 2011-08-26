@@ -3,6 +3,10 @@ package br.com.tqi.company.services;
 import java.util.Collections;
 import java.util.List;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
@@ -12,6 +16,7 @@ import br.com.tqi.company.City;
 import br.com.tqi.company.Company;
 import br.com.tqi.company.State;
 
+@Stateless
 @WebService
 public class CompanyServices {
 
@@ -19,18 +24,21 @@ public class CompanyServices {
 	private EntityManager em;
 
 	@WebMethod
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public Company addCompany(Company company) {
 		em.persist(company);
 		return company;
 	}
 
 	@WebMethod
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void updateCompany(Company company) {
 
 		em.merge(company);
 	}
 
 	@WebMethod
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void deleteCompany(Long companyId) {
 		Company c = em.find(Company.class, companyId);
 		em.remove(c);
@@ -54,9 +62,9 @@ public class CompanyServices {
 		}
 		return em
 				.createQuery(
-						"select c " +
-						"from City c, State s " +
-						"where s = :state and c.name like :prefix and c.state = s",
+						"select c "
+								+ "from City c, State s "
+								+ "where s = :state and c.name like :prefix and c.state = s",
 						City.class).setParameter("state", state)
 				.setParameter("prefix", prefix + "%").getResultList();
 	}
